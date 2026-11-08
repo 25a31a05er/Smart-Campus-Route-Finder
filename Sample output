@@ -1,0 +1,100 @@
+=========== SMART CAMPUS ROUTE FINDER ===========
+ Pragati Engineering College, Surampalem
+ 1. Display all campus locations
+ 2. Display campus map (ASCII)
+ 3. Find shortest route between two locations
+ 4. Display direct connections of a location
+ 5. Compare Dijkstra: adjacency matrix vs adjacency list
+ 6. Exit
+=================================================
+Enter your choice (1-6): 1
+
+--- Campus Locations ---
+ 1. Boys' Hostel
+ 2. EWS Lab
+ 3. BEEE Lab
+ 4. Civil Block
+ 5. AIML Block
+ 6. Library
+ 7. Canteen
+ 8. Main Block
+ 9. ECE Block
+ 10. Playground
+ 11. Parking Area
+
+Enter your choice (1-6): 2
+
+--- Simplified Campus Map (not to scale) ---
+
+                                           +-----------+
+                                           | CANTEEN   |------+
+                                           +-----+-----+      |
+                                                 |            |
++---------+  +-----+  +------+  +-------+   +----+----+   +---+----------+   +-------+
+| BOYS'   |--| EWS |--| BEEE |--| CIVIL |---| LIBRARY |---| MAIN BLOCK   |   | ECE   |
+| HOSTEL  |  | LAB |  | LAB  |  | BLOCK |   |         |   |              |   | BLOCK |
++---------+  +--+--+  +--+---+  +---+---+   +----+----+   +------+-------+   +---+---+
+                |        |          |            |               |               |
+             +--+--------+---+  +---+---+        |     +---------+---------+     |
+             | PARKING AREA  |--| AIML  |        |     | PLAYGROUND        |-----+
+             | (bus parking) |  | BLOCK |        |     +-------------------+
+             +-------+-------+  +-------+        |
+                     |                           |
+                     +---------------------------+
+
+Legend:
+  +-----+  box        = building / lab block
+  PLAYGROUND box      = open area (not a building)
+  --- and |           = walkable pathway between two locations
+  Back row left to right: Hostel, EWS Lab, BEEE Lab, Civil, Library, Main, ECE
+  Canteen is behind the Library; Playground is in front of the Main Block.
+
+Enter your choice (1-6): 3
+Enter SOURCE location number (1-11): 6
+Enter DESTINATION location number (1-11): 1
+
+Shortest route : Library -> Parking Area -> EWS Lab -> Boys' Hostel
+Total distance : 160 metres
+(Distances are SAMPLE values until replaced with measured data.)
+
+Enter your choice (1-6): 3
+Enter SOURCE location number (1-11): 5
+Enter DESTINATION location number (1-11): 5
+
+Source and destination are the same location (AIML Block). Distance = 0 m.
+
+Enter your choice (1-6): 4
+Select a location number (1-11): 6
+
+Direct connections of Library:
+  Civil Block  (60 m)
+  Canteen  (30 m)
+  Main Block  (70 m)
+  Parking Area  (75 m)
+
+Enter your choice (1-6): 99
+Invalid choice. Enter a number from 1 to 6.
+Enter your choice (1-6): abc
+Invalid input. Please enter a number.
+
+Enter your choice (1-6): 5
+Enter SOURCE location number (1-11): 6
+Enter DESTINATION location number (1-11): 9
+
+=== Dijkstra: Adjacency List vs Adjacency Matrix ===
+Source: Library   Destination: ECE Block
+
+Adjacency List   : 200 m   Path: Library -> Canteen -> Main Block -> Playground -> ECE Block
+Adjacency Matrix : 200 m   Path: Library -> Canteen -> Main Block -> Playground -> ECE Block
+
+Runs per version : 100000
+List   total time : 15450 microseconds (154 ns per run)
+Matrix total time : 17765 microseconds (177 ns per run)
+Result: adjacency LIST was faster in this run.
+Note: with only 11 vertices the difference is tiny; the list's
+advantage grows for large sparse graphs (O((V+E) log V) vs O(V^2)).
+(checksum 40000000 - ignore, prevents loop removal)
+
+Enter your choice (1-6): 6
+
+Thank you for using Smart Campus Route Finder.

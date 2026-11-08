@@ -17,7 +17,7 @@ and the two are timed on the same graph and source.
 campus-route-finder/
 |-- main.cpp     (all source code)
 |-- README.md    (this file)
-`-- VIVA.md      (viva questions and answers)
+Algorithm + Flowchart + PPT + SampleOutput
 ```
 
 ## 3. Features (menu)

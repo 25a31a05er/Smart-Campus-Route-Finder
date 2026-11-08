@@ -1,0 +1,31 @@
+1.  START                                              [Terminator]
+2.  Load campus graph (locations, edges, distances)    [Process]
+3.  Read source S and destination D                    [Input/Output]
+4.  Are S and D valid?                                 [Decision]
+      No  -> Display "Invalid input" -> back to 3
+      Yes -> continue
+5.  Is S = D?                                          [Decision]
+      Yes -> Display "Distance = 0 m" -> go to 17
+      No  -> continue
+6.  Initialise: dist[all] = INF, parent[all] = -1,
+    dist[S] = 0, all vertices unvisited                [Process]
+7.  Are there unvisited vertices left?                 [Decision]
+      No  -> go to 11
+      Yes -> continue
+8.  Select unvisited vertex u with minimum dist[u]     [Process]
+9.  Is dist[u] = INF?                                  [Decision]
+      Yes -> go to 11
+      No  -> continue
+10. Mark u visited. For each neighbour v of u:
+    if dist[u] + w < dist[v], update dist[v]
+    and set parent[v] = u -> go back to 7              [Process]
+11. Is dist[D] = INF?                                  [Decision]
+      Yes -> Display "Destination not reachable" -> go to 14
+      No  -> continue
+12. Rebuild path from D to S using parent[]
+    and reverse it                                     [Process]
+13. Display route and total distance dist[D] metres    [Input/Output]
+14. Another query?                                     [Decision]
+      Yes -> back to 3
+      No  -> continue
+15. STOP                                               [Terminator]

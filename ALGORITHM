@@ -1,0 +1,35 @@
+ALGORITHM: Smart Campus Route Finder using Dijkstra's Shortest Path Algorithm
+
+Input : Weighted undirected graph G(V, E) of campus locations,
+        source vertex S, destination vertex D
+Output: Shortest route from S to D and its total distance in metres
+
+Step 1 : Start.
+Step 2 : Store the campus locations as vertices and the pathways with their
+         distances as weighted edges (adjacency list and adjacency matrix).
+Step 3 : Read the source S and destination D. Validate both inputs.
+Step 4 : If S = D, display "Distance = 0 m" and go to Step 15.
+Step 5 : Initialise dist[v] = INF and parent[v] = -1 for every vertex v.
+         Set dist[S] = 0 and mark all vertices as unvisited.
+Step 6 : Insert (0, S) into the min-heap (adjacency list version),
+         or begin the vertex scan (adjacency matrix version).
+Step 7 : Repeat Steps 8 to 11 while unvisited vertices remain.
+Step 8 : Select the unvisited vertex u with the minimum dist[u].
+         (min-heap extraction in the list version, linear scan in the matrix version)
+Step 9 : If dist[u] = INF, stop the loop (remaining vertices are unreachable).
+Step 10: Mark u as visited.
+Step 11: For every neighbour v of u with edge weight w:
+             if dist[u] + w < dist[v] then
+                 dist[v]   = dist[u] + w
+                 parent[v] = u
+                 (insert (dist[v], v) into the min-heap in the list version)
+Step 12: If dist[D] = INF, display "Destination not reachable" and go to Step 15.
+Step 13: Rebuild the path: start at D, repeatedly move to parent[] until S is
+         reached, storing each vertex, then reverse the stored sequence.
+Step 14: Display the route (location -> location -> ...) and dist[D] metres.
+Step 15: Ask whether to run another query; if yes, go to Step 3.
+Step 16: Stop.
+
+Time complexity : O((V + E) log V) with adjacency list and binary min-heap
+                  O(V^2) with adjacency matrix and linear minimum selection
+Space complexity: O(V + E) for the list, O(V^2) for the matrix
